@@ -1,25 +1,21 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const TaskSchema = new Schema({
+const UserSchema = new Schema({
                                 _id: Number,
-                                name: {
+                                displayName: {type: String, trim: true},
+                                userName: {type: String, trim: true},
+                                email: {type: String, trim: true},
+                                image: {type: String, trim: true},
+                                routines: [],
+                                workouts: [],
+                                exercises: [],
+                                settings: Schema.Types.Mixed,
+                                timestamp: Schema.Types.Mixed,
+                                /*name: {
                                   type: String,
                                   required: 'Kindly enter the name of the task',
-                                },
-                                Created_date: {
-                                  type: Date,
-                                  default: Date.now,
-                                },
-                                status: {
-                                  type: [
-                                    {
-                                      type: String,
-                                      enum: ['pending', 'ongoing', 'completed'],
-                                    },
-                                  ],
-                                  default: ['pending'],
-                                },
+                                },*/
                               }, {_id: false});
 
-module.exports = mongoose.model('Users', TaskSchema);
+module.exports = mongoose.model('Users', UserSchema);

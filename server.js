@@ -1,9 +1,9 @@
-const express = require('express'),
-    app = express(),
-    port = process.env.PORT || 3000,
-    mongoose = require('mongoose'),
-    Task = require('./api/models/usersModel'), //created model loading here
-    bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+const mongoose = require('mongoose');
+const Users = require('./api/models/usersModel'); //created model loading her;
+const bodyParser = require('body-parser');
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;

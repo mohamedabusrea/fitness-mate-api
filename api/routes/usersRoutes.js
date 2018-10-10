@@ -2,8 +2,14 @@ module.exports = function(app) {
   const users = require('../controllers/usersController');
 
   // users Routes
-  app.route('/tasks')
-     .get(users.list_all_tasks)
+  app.route('/setUserData')
+     .post(users.setUserData);
+
+  app.route('/updateUserData/:userId')
+     .post(users.updateUserData);
+
+  app.route('/getUserData/:userId')
+     .get(users.getUserData)
      .post(users.create_a_task);
 
   app.route('/tasks/:taskId')

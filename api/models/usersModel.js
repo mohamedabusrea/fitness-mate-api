@@ -7,9 +7,9 @@ const UserSchema = new Schema({
                                 userName: {type: String, trim: true},
                                 email: {type: String, trim: true},
                                 image: {type: String, trim: true},
-                                routines: [],
-                                workouts: [Object],
-                                exercises: [Object],
+                                routines: Schema.Types.Mixed,
+                                workouts: Schema.Types.Mixed,
+                                exercises: Schema.Types.Mixed,
                                 settings: Schema.Types.Mixed,
                                 timestamp: Schema.Types.Mixed,
                                 /*name: {

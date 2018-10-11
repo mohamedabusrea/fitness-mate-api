@@ -16,14 +16,14 @@ exports.getUserData = (req, res) => {
   // const basicAuthData = this.decodeBasicAuth(req.headers['authorization']);
 
   Users.find({_id: req.params.userId}, (err, userData) => {
-    err ? res.send(err) : res.json(userData);
+    err ? res.status(500).send(err) : res.json(userData);
   });
 };
 
 exports.setUserData = (req, res) => {
   const new_user = new Users(req.body);
   new_user.save((err, user) => {
-    err ? res.send(err) : res.json(user);
+    err ? res.status(404).send(err) : res.json(user);
   });
 };
 
@@ -32,8 +32,15 @@ exports.updateUserData = (req, res) => {
                          req.body,
                          {new: true, upsert: true},
                          (err, task) => {
-                           err ? res.send(err) : res.json(task);
+                           err ? res.status(500).send(err) : res.json(task);
                          });
+};
+
+exports.searchUserData = (req, res) => {
+  Users.find({...req.body.query},
+             (err, task) => {
+               err ? res.status(500).send(err) : res.json(task);
+             });
 };
 
 exports.delete_a_task = function(req, res) {

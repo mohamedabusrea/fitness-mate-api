@@ -10,4 +10,7 @@ module.exports = function(app) {
 
   app.route('/getUserData/:userId')
      .get(users.getUserData);
+
+  app.route('/searchUserData')
+     .post(users.searchUserData);
 };

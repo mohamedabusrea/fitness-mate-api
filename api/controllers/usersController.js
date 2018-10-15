@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const firebase = require('../../firebase');
 const Users = mongoose.model('Users');
 
 exports.decodeBasicAuth = (authData) => {
@@ -12,10 +13,10 @@ exports.decodeBasicAuth = (authData) => {
   return [username, password];
 };
 
-exports.getUserData = (req, res) => {
-  // const basicAuthData = this.decodeBasicAuth(req.headers['authorization']);
+exports.getUserData = async (req, res) => {
+  const uid = await firebase.validateToken(req.headers.authorization);
 
-  Users.find({_id: req.params.userId}, (err, userData) => {
+  Users.find({_id: uid}, (err, userData) => {
     err ? res.status(500).send(err) : res.json(userData);
   });
 };
@@ -27,8 +28,10 @@ exports.setUserData = (req, res) => {
   });
 };
 
-exports.updateUserData = (req, res) => {
-  Users.findOneAndUpdate({_id: req.params.userId},
+exports.updateUserData = async (req, res) => {
+  const uid = await firebase.validateToken(req.headers.authorization);
+
+  Users.findOneAndUpdate({_id: uid},
                          req.body,
                          {new: true, upsert: true},
                          (err, task) => {

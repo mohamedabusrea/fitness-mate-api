@@ -5,10 +5,10 @@ module.exports = function(app) {
   app.route('/setUserData')
      .post(users.setUserData);
 
-  app.route('/updateUserData/:userId')
+  app.route('/updateUserData')
      .post(users.updateUserData);
 
-  app.route('/getUserData/:userId')
+  app.route('/getUserData')
      .get(users.getUserData);
 
   app.route('/searchUserData')

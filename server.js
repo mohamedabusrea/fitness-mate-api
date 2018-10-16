@@ -20,7 +20,7 @@ app.use('/', async (req, res, next) => {
 });
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://mohamedabusrea:ZsL4b1ef@ds125673.mlab.com:25673/fitness-mate', {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

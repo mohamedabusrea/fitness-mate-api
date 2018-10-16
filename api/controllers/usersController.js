@@ -39,8 +39,10 @@ exports.updateUserData = async (req, res) => {
                          });
 };
 
-exports.searchUserData = (req, res) => {
-  Users.find({...req.body.query},
+exports.searchUserData = async (req, res) => {
+  const uid = await firebase.validateToken(req.headers.authorization);
+
+  Users.find({_id: uid},
              (err, task) => {
                err ? res.status(500).send(err) : res.json(task);
              });

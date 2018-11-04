@@ -13,6 +13,7 @@ const UserSchema = new Schema({
                                 settings: Schema.Types.Mixed,
                                 timestamp: Schema.Types.Mixed,
                                 metrics: Schema.Types.Mixed,
+                                about: Schema.Types.Mixed,
                                 /*name: {
                                  type: String,
                                  required: 'Kindly enter the name of the task',

@@ -9,7 +9,7 @@ const UserSchema = new Schema({
                                 image: {type: String, trim: true},
                                 routines: Schema.Types.Mixed,
                                 workouts: Schema.Types.Mixed,
-                                exercises: Schema.Types.Mixed,
+                                customExercises: Schema.Types.Mixed,
                                 settings: Schema.Types.Mixed,
                                 timestamp: Schema.Types.Mixed,
                                 metrics: Schema.Types.Mixed,

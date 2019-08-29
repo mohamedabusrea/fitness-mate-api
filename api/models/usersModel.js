@@ -15,6 +15,7 @@ const UserSchema = new Schema({
                                 metrics: Schema.Types.Mixed,
                                 about: Schema.Types.Mixed,
                                 notifications: Schema.Types.Mixed,
+                                hasLaunched: Boolean,
                                 /*name: {
                                  type: String,
                                  required: 'Kindly enter the name of the task',
